@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ufmcb80yyw7g"]
+
+[ext_resource type="Texture2D" uid="uid://bi445yygnrphg" path="res://Kenney Assets/Ships/ship_0002.png" id="1_pgk1t"]
+[ext_resource type="Script" path="res://enemy.gd" id="2_kqy6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q04je"]
+size = Vector2(30.927, 24.1395)
+
+[node name="Enemy" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(216, 440)
+rotation = 3.13602
+scale = Vector2(4.11854, 4.66919)
+texture = ExtResource("1_pgk1t")
+script = ExtResource("2_kqy6e")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.8147e-06, -7.62939e-06)
+shape = SubResource("RectangleShape2D_q04je")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="meFui"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

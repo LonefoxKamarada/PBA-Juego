@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpw1faptod7f"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_7jwvo"]
+[ext_resource type="Script" path="res://avioneta.gd" id="2_xbp7c"]
+[ext_resource type="PackedScene" uid="uid://b78lb4q4afsf" path="res://enemy.tscn" id="3_nsy8n"]
+[ext_resource type="Texture2D" uid="uid://bfprjb7r3cec6" path="res://survivor1_gun.png" id="3_wnpvb"]
+[ext_resource type="Script" path="res://enemy.gd" id="5_hlh7g"]
+
+[node name="World" type="Node"]
+script = ExtResource("1_7jwvo")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(368, 728)
+scale = Vector2(5, 5)
+script = ExtResource("2_xbp7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_wnpvb")
+
+[node name="Enemy" parent="." instance=ExtResource("3_nsy8n")]
+position = Vector2(208, 240)
+script = null
+
+[node name="Area2D2" type="Area2D" parent="Enemy"]
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="Enemy"]
+visible = false
+position = Vector2(-208, -240)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 442.0
+offset_top = 294.0
+offset_right = 753.0
+offset_bottom = 438.0
+text = "asdsadsadsad asdsad"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Enemy/Area2D")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(208, 240)
+script = ExtResource("5_hlh7g")

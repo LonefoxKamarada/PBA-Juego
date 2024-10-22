@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccj4arf5agk0v"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_q52dv"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_q52dv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.343671, 0.297084, 1, 1)
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.209877
+anchor_top = 0.355556
+anchor_right = 0.790123
+anchor_bottom = 0.568889
+offset_left = 0.0984039
+offset_top = 126.555
+offset_right = 0.0983887
+offset_bottom = 126.555
+text = "EMPEZAR"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 191.0
+offset_top = 116.0
+offset_right = 391.0
+offset_bottom = 156.0
+scale = Vector2(2, 2)
+theme_override_font_sizes/normal_font_size = 22
+text = "No hay TIEMPO!"
+
+[connection signal="pressed" from="Button" to="." method="empezar"]
